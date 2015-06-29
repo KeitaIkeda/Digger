@@ -4,44 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <title>Digger</title>
-    <script type="text/javascript" src="function.js"></script>
+    <script type="text/javascript" src="function_gm.js"></script>
+    <script type="text/javascript" src="function_intr.js"></script>
     <script>
-        var flg = new Array(19);
-        var mcv, ctx, blc, awa, iwa, arw, air = 100;
-        var arw_pos = {
-            x: 9,
-            y: 2
-        };
-        flg_def();
         window.onload = function () {
             blc = document.getElementById("blc");
             awa = document.getElementById("awa");
             iwa = document.getElementById("iwa");
             arw = document.getElementById("arw");
+            blc_b = document.getElementById("blc_b");
+            awa_b = document.getElementById("awa_b");
+            arw_b = document.getElementById("arw_b");
             mcv = document.getElementById("mcv");
-            mcv.width = 950;
-            mcv.height = 500;
+            mcv.width = cv_w;
+            mcv.height = cv_h;
             ctx = mcv.getContext("2d");
             draw();
             keydown_eve();
             document.getElementById("air").innerHTML = "エアー表示です<br>エアー : " + air;
             air_fnc();
             dbg();
+            //-------intr--------
+            intrcv = document.getElementById("intr");
+            intrcv.width = cv_w;
+            intrcv.height = cv_h;
+            intrctx = intrcv.getContext("2d");
+            draw_b();
+            intr_ani();
         };
-        //}
     </script>
     <style>
         #mcv {
             background-color: #184153;
+            position: relative;
+            z-index: 0;
+            display: none;
         }
         
         #blc_img {
             display: none;
         }
+        
+        #intr {
+            position: absolute;
+            z-index: 1;
+        }
     </style>
 </head>
 
 <body>
+    <canvas id="intr"></canvas>
     <canvas id="mcv"></canvas>
     <p id="air"></p>
     <p id="arw_dbg"></p>
@@ -52,6 +64,9 @@
         <img src="arw.png" id="arw">
         <img src="awa.png" id="awa">
         <img src="iwa.png" id="iwa">
+        <img src="block_b.png" id="blc_b">
+        <img src="awa_b.png" id="awa_b">
+        <img src="arw_b.png" id="arw_b">
     </div>
 
 </body>

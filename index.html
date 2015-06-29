@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Digger</title>
+    <script type="text/javascript" src="function.js"></script>
+    <script>
+        var pos = new Array(19);
+        var mcv, ctx, air = 100;
+        pos_def();
+        var arw_pos = {
+            x: 9,
+            y: 2
+        };
+        window.onload = function () {
+            mcv = document.getElementById("mcv");
+            mcv.width = 950;
+            mcv.height = 500;
+            ctx = mcv.getContext("2d");
+            draw_blc();
+            keydown_eve();
+            draw_arw();
+            document.getElementById("air").innerHTML = "エアー表示です<br>エアー : " + air;
+            air_fnc();
+            dbg();
+        };
+        //}
+    </script>
+    <style>
+        #mcv {
+            background-color: #184153;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="mcv"></canvas>
+    <p id="air"></p>
+    <p id="arw_dbg"></p>
+    <p id="pos_dbg"></p>
+</body>
+
+</html>

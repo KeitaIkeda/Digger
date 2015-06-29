@@ -6,21 +6,24 @@
     <title>Digger</title>
     <script type="text/javascript" src="function.js"></script>
     <script>
-        var pos = new Array(19);
-        var mcv, ctx, air = 100;
-        pos_def();
+        var flg = new Array(19);
+        var mcv, ctx, blc, awa, iwa, arw, air = 100;
         var arw_pos = {
             x: 9,
             y: 2
         };
+        flg_def();
         window.onload = function () {
+            blc = document.getElementById("blc");
+            awa = document.getElementById("awa");
+            iwa = document.getElementById("iwa");
+            arw = document.getElementById("arw");
             mcv = document.getElementById("mcv");
             mcv.width = 950;
             mcv.height = 500;
             ctx = mcv.getContext("2d");
-            draw_blc();
+            draw();
             keydown_eve();
-            draw_arw();
             document.getElementById("air").innerHTML = "エアー表示です<br>エアー : " + air;
             air_fnc();
             dbg();
@@ -31,6 +34,10 @@
         #mcv {
             background-color: #184153;
         }
+        
+        #blc_img {
+            display: none;
+        }
     </style>
 </head>
 
@@ -39,6 +46,14 @@
     <p id="air"></p>
     <p id="arw_dbg"></p>
     <p id="pos_dbg"></p>
+    <p id="draw_dbg"></p>
+    <div id="blc_img">
+        <img src="block.png" id="blc">
+        <img src="arw.png" id="arw">
+        <img src="awa.png" id="awa">
+        <img src="iwa.png" id="iwa">
+    </div>
+
 </body>
 
 </html>

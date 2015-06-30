@@ -137,6 +137,7 @@ function draw() {
                 ctx.clearRect(i * blc_len, j * blc_len, blc_len, blc_len);
                 break;
             case f_n.blc:
+                //blc.load();
                 ctx.clearRect(i * blc_len, j * blc_len, blc_len, blc_len);
                 ctx.drawImage(blc, i * blc_len, j * blc_len);
                 break;

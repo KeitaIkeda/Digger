@@ -55,6 +55,7 @@ function intr_ani() {
         };*/
         intrcv.style.display = "none";
         intr_f = 1;
+        //setInterval(ref, 1500);
     }, 5000);
 };
 

@@ -23,6 +23,11 @@ function flg_def_b() {
     flg_b[4][1] = f_n.awa;
 };
 
+function title() {
+    intrctx.font = "30px";
+    intrctx.fillText("Digger", 150, 75);
+};
+
 function intr_ani() {
     aud_atc.load();
     aud_awa.load();
@@ -46,8 +51,8 @@ function intr_ani() {
     }, 1000);
     setTimeout(function () {
         mcv.style.display = "block";
-        /*var i = 10;
-        while (i > -1) {
+        var i = 10;
+        /*while (i > -1) {
             setTimeout(function () {
                 intrctx.globalAlpha = i / 10;
             }, 1000);
@@ -81,4 +86,5 @@ function draw_b() {
             };
         };
     };
+    title();
 };

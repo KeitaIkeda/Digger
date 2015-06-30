@@ -1,6 +1,11 @@
 var cv_w = 1050,
     cv_h = 600;
-var mcv, ctx, blc, awa, iwa, arw, air_def = 100,
+var mcv, ctx, blc, awa, iwa, arw = {
+        u: null,
+        r: null,
+        l: null
+    },
+    air_def = 100,
     air = air_def,
     intr_f = 0,
     blc_len = 50;
@@ -20,7 +25,9 @@ var f_n = {
     blc: 1,
     awa: 2,
     iwa: 3,
-    arw: 4
+    arw_u: 40,
+    arw_r: 41,
+    arw_l: 42,
 };
 var flg = new Array(blc_w);
 flg_def();
@@ -34,7 +41,7 @@ function flg_def() {
             flg[i][j] = 0;
         };
     };
-    flg[arw_pos.x][arw_pos.y] = f_n.arw;
+    flg[arw_pos.x][arw_pos.y] = f_n.arw_u;
     for (var i = 0; i < blc_w; i++) {
         for (var j = arw_pos_def.y + 1; j < blc_h; j++) {
             flg[i][j] = f_n.blc;
@@ -65,7 +72,7 @@ function keydown_eve() {
                     arw_pos.y = arw_lim;
                     ref();
                 };
-                flg[arw_pos.x][arw_pos.y] = f_n.arw;
+                flg[arw_pos.x][arw_pos.y] = f_n.arw_u;
                 //ref();
             } else if (event.keyCode == 39) { //右
                 flg[arw_pos.x][arw_pos.y] = f_n.none;
@@ -74,7 +81,7 @@ function keydown_eve() {
                     arw_pos.x = blc_w - 1;
                 };
                 flg_eve();
-                flg[arw_pos.x][arw_pos.y] = f_n.arw;
+                flg[arw_pos.x][arw_pos.y] = f_n.arw_r;
             } else if (event.keyCode == 37) { //左
                 flg[arw_pos.x][arw_pos.y] = f_n.none;
                 arw_pos.x -= 1;
@@ -82,7 +89,7 @@ function keydown_eve() {
                     arw_pos.x = 0;
                 };
                 flg_eve();
-                flg[arw_pos.x][arw_pos.y] = f_n.arw;
+                flg[arw_pos.x][arw_pos.y] = f_n.arw_l;
             };
             draw();
         };
@@ -149,9 +156,17 @@ function draw() {
                 ctx.clearRect(i * blc_len, j * blc_len, blc_len, blc_len);
                 ctx.drawImage(iwa, i * blc_len, j * blc_len);
                 break;
-            case f_n.arw:
+            case f_n.arw_u:
                 ctx.clearRect(i * blc_len, j * blc_len, blc_len, blc_len);
-                ctx.drawImage(arw, i * blc_len, j * blc_len);
+                ctx.drawImage(arw.u, i * blc_len, j * blc_len);
+                break;
+            case f_n.arw_r:
+                ctx.clearRect(i * blc_len, j * blc_len, blc_len, blc_len);
+                ctx.drawImage(arw.r, i * blc_len, j * blc_len);
+                break;
+            case f_n.arw_l:
+                ctx.clearRect(i * blc_len, j * blc_len, blc_len, blc_len);
+                ctx.drawImage(arw.l, i * blc_len, j * blc_len);
                 break;
             };
         };

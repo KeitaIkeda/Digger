@@ -11,7 +11,9 @@
             blc = document.getElementById("blc");
             awa = document.getElementById("awa");
             iwa = document.getElementById("iwa");
-            arw = document.getElementById("arw");
+            arw.u = document.getElementById("arw");
+            arw.r = document.getElementById("arw_r");
+            arw.l = document.getElementById("arw_l");
             blc_b = document.getElementById("blc_b");
             awa_b = document.getElementById("awa_b");
             arw_b = document.getElementById("arw_b");
@@ -24,6 +26,8 @@
             document.getElementById("air").innerHTML = "エアー表示です<br>エアー : " + air;
             air_fnc();
             dbg();
+
+
             //-------intr--------
             intrcv = document.getElementById("intr");
             intrcv.width = cv_w;
@@ -61,13 +65,15 @@
     <p id="pos_dbg"></p>
     <p id="draw_dbg"></p>
     <div id="blc_img">
-        <img src="block.png" id="blc">
-        <img src="arw.png" id="arw">
-        <img src="awa.png" id="awa">
-        <img src="iwa.png" id="iwa">
-        <img src="block_b.png" id="blc_b">
-        <img src="awa_b.png" id="awa_b">
-        <img src="arw_b.png" id="arw_b">
+        <img src="img/block.png" id="blc">
+        <img src="img/arw.png" id="arw">
+        <img src="img/arw_l.png" id="arw_l">
+        <img src="img/arw_r.png" id="arw_r">
+        <img src="img/awa.png" id="awa">
+        <img src="img/iwa.png" id="iwa">
+        <img src="img/block_b.png" id="blc_b">
+        <img src="img/awa_b.png" id="awa_b">
+        <img src="img/arw_b.png" id="arw_b">
     </div>
 
 </body>

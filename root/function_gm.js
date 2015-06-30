@@ -24,7 +24,8 @@ var f_n = {
     none: 0,
     blc: 1,
     awa: 2,
-    iwa: 3,
+    iwa_p: 30,
+    iwa_s: 31,
     arw_u: 40,
     arw_r: 41,
     arw_l: 42,
@@ -49,7 +50,7 @@ function flg_def() {
         var ran1 = arw_pos_def.y + 1 + Math.floor(Math.random() * blc_h * 2.5);
         var ran2 = arw_pos_def.y + 1 + Math.floor(Math.random() * blc_h);
         flg[i][ran1] = f_n.awa;
-        flg[i][ran2] = f_n.iwa;
+        flg[i][ran2] = f_n.iwa_p;
     };
 };
 
@@ -57,8 +58,17 @@ function air_fnc() {
     if (arw_pos.y > arw_pos_def.y) {
         air -= 1;
     };
-    document.getElementById("air").innerHTML = "エアー表示です<br>エアー : " + air;
-    setTimeout(air_fnc, 1000);
+    if (air <= 0) {
+        air = 0;
+        document.getElementById("air").innerHTML = "エアー表示です<br>エアー : " + air;
+        setTimeout(function () {
+            alert("ゲームオーバーです\nOKで更新します");
+            location.reload(true);
+        }, 300);
+    } else {
+        document.getElementById("air").innerHTML = "エアー表示です<br>エアー : " + air;
+        setTimeout(air_fnc, 1000);
+    };
 };
 
 function keydown_eve() {
@@ -102,7 +112,7 @@ function flg_eve() {
         if (air > air_def) {
             air = air_def;
         };
-    } else if (flg[arw_pos.x][arw_pos.y] == f_n.iwa) {
+    } else if (flg[arw_pos.x][arw_pos.y] == f_n.iwa_p) {
         air -= 30;
     };
 };
@@ -125,7 +135,7 @@ function ref() {
         if (i == ran1 && ran1 < blc_w) {
             flg[i][blc_h - 1] = f_n.awa;
         } else if (i == ran[0] || i == ran[1] || i == ran[2] || i == ran[3]) {
-            flg[i][blc_h - 1] = f_n.iwa;
+            flg[i][blc_h - 1] = f_n.iwa_p;
         };
     };
     draw();
@@ -152,7 +162,7 @@ function draw() {
                 ctx.clearRect(i * blc_len, j * blc_len, blc_len, blc_len);
                 ctx.drawImage(awa, i * blc_len, j * blc_len);
                 break;
-            case f_n.iwa:
+            case f_n.iwa_p:
                 ctx.clearRect(i * blc_len, j * blc_len, blc_len, blc_len);
                 ctx.drawImage(iwa, i * blc_len, j * blc_len);
                 break;

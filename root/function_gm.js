@@ -61,13 +61,11 @@ function air_fnc() {
     };
     if (air <= 0) {
         air = 0;
-        document.getElementById("air").innerHTML = "エアー表示です<br>エアー : " + air;
         setTimeout(function () {
             alert("ゲームオーバーです\nOKで更新します");
             location.reload(true);
         }, 300);
     } else {
-        document.getElementById("air").innerHTML = "エアー表示です<br>エアー : " + air;
         setTimeout(air_fnc, 1000);
     };
 };
@@ -151,11 +149,6 @@ function ref() {
         };
     };
     draw();
-};
-
-function dbg() {
-    document.getElementById("arw_dbg").innerHTML = "X:" + arw_pos.x + "  Y:" + arw_pos.y;
-    setTimeout(dbg, 1);
 };
 
 function draw() {

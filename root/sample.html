@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+    <script>
+        var a = 20;
+        console.log(a);
+        a = zero(a, 3);
+        console.log(a);
+
+        function zero(num, count) {
+            var zero = "";
+            for (var i = 0; i < count; i++) {
+                zero += "0";
+            }
+            var n = (zero + num).slice(-count);
+            return n;
+        }
+    </script>
+</head>
+
+<body>
+
+
+
+</body>
+
+</html>

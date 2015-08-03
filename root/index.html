@@ -6,6 +6,7 @@
     <title>Digger</title>
     <script type="text/javascript" src="function_gm.js"></script>
     <script type="text/javascript" src="function_intr.js"></script>
+    <script type="text/javascript" src="function_status.js"></script>
     <script>
         window.onload = function () {
             blc = document.getElementById("blc");
@@ -17,6 +18,17 @@
             blc_b = document.getElementById("blc_b");
             awa_b = document.getElementById("awa_b");
             arw_b = document.getElementById("arw_b");
+            nmb0 = document.getElementById("nmb0");
+            nmb1 = document.getElementById("nmb1");
+            nmb2 = document.getElementById("nmb2");
+            nmb3 = document.getElementById("nmb3");
+            nmb4 = document.getElementById("nmb4");
+            nmb5 = document.getElementById("nmb5");
+            nmb6 = document.getElementById("nmb6");
+            nmb7 = document.getElementById("nmb7");
+            nmb8 = document.getElementById("nmb8");
+            nmb9 = document.getElementById("nmb9");
+            stsblc = document.getElementById("stsblc");
             mcv = document.getElementById("mcv");
             mcv.width = cv_w;
             mcv.height = cv_h;
@@ -35,14 +47,23 @@
             intrctx = intrcv.getContext("2d");
             draw_b();
             intr_ani();
+
+            //-------status--------
+            stscv = document.getElementById("sts");
+            stscv.width = stscv_w;
+            stscv.height = stscv_h;
+            stsctx = stscv.getContext("2d");
+            draw_sts();
+            sts_def();
+            air_sts();
+            stg_sts();
         };
     </script>
     <style>
         #mcv {
             background-color: #184153;
-            position: relative;
+            position: absolute;
             z-index: 0;
-            display: none;
         }
         
         #blc_img {
@@ -54,16 +75,25 @@
             position: absolute;
             z-index: 1;
         }
+        
+        #sts {
+            background-color: #000000;
+            position: absolute;
+            left: 1055px;
+        }
     </style>
 </head>
 
 <body>
     <canvas id="intr"></canvas>
     <canvas id="mcv"></canvas>
-    <p id="air"></p>
-    <p id="arw_dbg"></p>
-    <p id="pos_dbg"></p>
-    <p id="draw_dbg"></p>
+    <canvas id="sts"></canvas>
+    <div id="karists">
+        <p id="air"></p>
+        <p id="arw_dbg"></p>
+        <p id="pos_dbg"></p>
+        <p id="draw_dbg"></p>
+    </div>
     <div id="blc_img">
         <img src="img/block.png" id="blc">
         <img src="img/arw.png" id="arw">
@@ -74,6 +104,17 @@
         <img src="img/block_b.png" id="blc_b">
         <img src="img/awa_b.png" id="awa_b">
         <img src="img/arw_b.png" id="arw_b">
+        <img src="img/nmb/0.png" id="nmb0">
+        <img src="img/nmb/1.png" id="nmb1">
+        <img src="img/nmb/2.png" id="nmb2">
+        <img src="img/nmb/3.png" id="nmb3">
+        <img src="img/nmb/4.png" id="nmb4">
+        <img src="img/nmb/5.png" id="nmb5">
+        <img src="img/nmb/6.png" id="nmb6">
+        <img src="img/nmb/7.png" id="nmb7">
+        <img src="img/nmb/8.png" id="nmb8">
+        <img src="img/nmb/9.png" id="nmb9">
+        <img src="img/sts.png" id="stsblc">
     </div>
 
 </body>

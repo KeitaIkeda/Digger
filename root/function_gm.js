@@ -8,7 +8,8 @@ var mcv, ctx, blc, awa, iwa, arw = {
     air_def = 100,
     air = air_def,
     intr_f = 0,
-    blc_len = 50;
+    blc_len = 50,
+    stg = 0;
 var blc_w = cv_w / blc_len,
     blc_h = cv_h / blc_len;
 var arw_lim = Math.floor(blc_h / 3 * 2);
@@ -39,7 +40,7 @@ function flg_def() {
     for (var i = 0; i < blc_w; i++) {
         flg[i] = new Array(blc_h);
         for (var j = 0; j < blc_h; j++) {
-            flg[i][j] = 0;
+            flg[i][j] = f_n.none;
         };
     };
     flg[arw_pos.x][arw_pos.y] = f_n.arw_u;
@@ -77,6 +78,7 @@ function keydown_eve() {
             if (event.keyCode == 40) { //下
                 flg[arw_pos.x][arw_pos.y] = f_n.none;
                 arw_pos.y += 1;
+                stg += 1;
                 flg_eve();
                 if (arw_pos.y > arw_lim) {
                     arw_pos.y = arw_lim;
@@ -84,6 +86,7 @@ function keydown_eve() {
                 };
                 flg[arw_pos.x][arw_pos.y] = f_n.arw_u;
                 //ref();
+                console.log(stg);
             } else if (event.keyCode == 39) { //右
                 flg[arw_pos.x][arw_pos.y] = f_n.none;
                 arw_pos.x += 1;
@@ -117,6 +120,7 @@ function flg_eve() {
         flg[arw_pos.x][arw_pos.y] = f_n.iwa_s;
         if (event.keyCode == 40) {
             arw_pos.y -= 1;
+            stg -= 1;
         } else if (event.keyCode == 39) {
             arw_pos.x -= 1;
         } else if (event.keyCode == 37) {
@@ -171,6 +175,10 @@ function draw() {
                 ctx.drawImage(awa, i * blc_len, j * blc_len);
                 break;
             case f_n.iwa_p:
+                ctx.clearRect(i * blc_len, j * blc_len, blc_len, blc_len);
+                ctx.drawImage(iwa, i * blc_len, j * blc_len);
+                break;
+            case f_n.iwa_s:
                 ctx.clearRect(i * blc_len, j * blc_len, blc_len, blc_len);
                 ctx.drawImage(iwa, i * blc_len, j * blc_len);
                 break;

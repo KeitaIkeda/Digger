@@ -18,34 +18,34 @@ function flg_def_b() {
             flg_b[i][j] = f_n.blc;
         };
     };
-    flg_b[0][1] = f_n.none;
-    flg_b[1][1] = f_n.arw;
-    flg_b[4][1] = f_n.awa;
+    flg_b[0][2] = f_n.none;
+    flg_b[1][2] = f_n.arw;
+    flg_b[4][2] = f_n.awa;
 };
 
-function title() {
-    intrctx.font = "30px";
-    intrctx.fillText("Digger", 150, 75);
-};
+/*function title() {
+    intrctx.font = "250px 'ＭＳ ゴシック'";
+    intrctx.fillText("Digger", 150, 240);
+};*/
 
 function intr_ani() {
     aud_atc.load();
     aud_awa.load();
     setTimeout(function () {
-        flg_b[1][1] = f_n.none;
-        flg_b[2][1] = f_n.arw;
-        draw_b();
         aud_atc.play();
+        flg_b[1][2] = f_n.none;
+        flg_b[2][2] = f_n.arw;
+        draw_b();
         setTimeout(function () {
-            flg_b[2][1] = f_n.none;
-            flg_b[3][1] = f_n.arw;
-            draw_b();
+            flg_b[2][2] = f_n.none;
+            flg_b[3][2] = f_n.arw;
             aud_atc.play();
+            draw_b();
             setTimeout(function () {
-                flg_b[3][1] = f_n.none;
-                flg_b[4][1] = f_n.arw;
-                draw_b();
                 aud_awa.play();
+                flg_b[3][2] = f_n.none;
+                flg_b[4][2] = f_n.arw;
+                draw_b();
             }, 1000)
         }, 1000)
     }, 1000);
@@ -86,5 +86,10 @@ function draw_b() {
             };
         };
     };
-    title();
+    var title_img = new Image();
+    title_img.src = "img/digger_title.png";
+    title_img.onload = function () {
+        intrctx.drawImage(this, 150, 0);
+    };
+    //title();
 };

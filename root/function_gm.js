@@ -148,7 +148,7 @@ function ref() {
             flg[i][blc_h - 1] = f_n.iwa_p;
         };
     };
-    draw();
+    //draw();
 };
 
 function draw() {
